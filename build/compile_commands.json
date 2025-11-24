@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/lovetheresia/Desktop/c++_projects/async/my_async/build",
+  "command": "/usr/bin/g++  -DZH_ASYNC_DEBUG -DZH_ASYNC_EXCEPT -I../  -g   -std=c++2a -o CMakeFiles/my_async.dir/script/dummy.cpp.o -c /home/lovetheresia/Desktop/c++_projects/async/my_async/script/dummy.cpp",
+  "file": "/home/lovetheresia/Desktop/c++_projects/async/my_async/script/dummy.cpp"
+}
+]

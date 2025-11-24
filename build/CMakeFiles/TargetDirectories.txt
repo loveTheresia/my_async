@@ -1,0 +1,3 @@
+/home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/rebuild_cache.dir
+/home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/edit_cache.dir
+/home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/my_async.dir

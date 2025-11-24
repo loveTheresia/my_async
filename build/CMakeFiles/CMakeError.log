@@ -1,0 +1,117 @@
+Performing C++ SOURCE FILE Test HAS_SYMMETRIC_COROUTINE failed with the following output:
+Change Dir: /home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_96ab2/fast && /usr/bin/make -f CMakeFiles/cmTC_96ab2.dir/build.make CMakeFiles/cmTC_96ab2.dir/build
+make[1]: 进入目录“/home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_96ab2.dir/src.cxx.o
+/usr/bin/g++    -DHAS_SYMMETRIC_COROUTINE   -std=c++2a -o CMakeFiles/cmTC_96ab2.dir/src.cxx.o -c /home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/CMakeTmp/src.cxx
+/home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/CMakeTmp/src.cxx:7:43: error: ‘std::coroutine_’ has not been declared
+    7 |     std::coroutine_handle<> await_suspend(std::coroutine_)const
+      |                                           ^~~
+/home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/CMakeTmp/src.cxx: In function ‘symmetric task()’:
+/home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/CMakeTmp/src.cxx:28:22: error: cannot convert ‘std::__n4861::coroutine_handle<symmetric::promise_type>’ to ‘int’
+   28 |     co_await awaiter{};
+      |                      ^
+/home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/CMakeTmp/src.cxx:7:43: note:   initializing argument 1 of ‘std::__n4861::coroutine_handle<void> awaiter::await_suspend(int) const’
+    7 |     std::coroutine_handle<> await_suspend(std::coroutine_)const
+      |                                           ^~~~~~~~~~~~~~~
+make[1]: *** [CMakeFiles/cmTC_96ab2.dir/build.make:66：CMakeFiles/cmTC_96ab2.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_96ab2/fast] 错误 2
+
+
+Source file was:
+
+#include <coroutine>
+
+struct awaiter
+{
+    bool await_ready()const { return false;}
+    std::coroutine_handle<> await_suspend(std::coroutine_)const
+    {
+        return std::noop_coroutine();
+    }
+    void await_resume() const {}
+};
+
+struct symmetric
+{
+    struct promise_type
+    {
+        symmetric get_return_object() { return symmetric{}; }
+        std::suspend_always initial_suspend() { return {}; }
+        std::suspend_always final_suspend()noexcept { return {}; }
+        void return_void() {}
+        void unhandled_exception(){}
+    };
+};
+
+symmetric task()
+{
+    co_await awaiter{};
+    co_return;
+}
+
+int main()
+{
+    task();
+    return 0;
+
+}
+Performing C++ SOURCE FILE Test HAS_SYMMETRIC_COROUTINE failed with the following output:
+Change Dir: /home/lovetheresia/Desktop/c++_projects/async/my_async/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_9aa41 && [1/2] Building CXX object CMakeFiles/cmTC_9aa41.dir/src.cxx.o
+FAILED: CMakeFiles/cmTC_9aa41.dir/src.cxx.o 
+/usr/bin/g++    -DHAS_SYMMETRIC_COROUTINE   -std=c++2a -o CMakeFiles/cmTC_9aa41.dir/src.cxx.o -c src.cxx
+src.cxx:7:43: error: ‘std::coroutine_’ has not been declared
+    7 |     std::coroutine_handle<> await_suspend(std::coroutine_)const
+      |                                           ^~~
+src.cxx: In function ‘symmetric task()’:
+src.cxx:28:22: error: cannot convert ‘std::__n4861::coroutine_handle<symmetric::promise_type>’ to ‘int’
+   28 |     co_await awaiter{};
+      |                      ^
+src.cxx:7:43: note:   initializing argument 1 of ‘std::__n4861::coroutine_handle<void> awaiter::await_suspend(int) const’
+    7 |     std::coroutine_handle<> await_suspend(std::coroutine_)const
+      |                                           ^~~~~~~~~~~~~~~
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <coroutine>
+
+struct awaiter
+{
+    bool await_ready()const { return false;}
+    std::coroutine_handle<> await_suspend(std::coroutine_)const
+    {
+        return std::noop_coroutine();
+    }
+    void await_resume() const {}
+};
+
+struct symmetric
+{
+    struct promise_type
+    {
+        symmetric get_return_object() { return symmetric{}; }
+        std::suspend_always initial_suspend() { return {}; }
+        std::suspend_always final_suspend()noexcept { return {}; }
+        void return_void() {}
+        void unhandled_exception(){}
+    };
+};
+
+symmetric task()
+{
+    co_await awaiter{};
+    co_return;
+}
+
+int main()
+{
+    task();
+    return 0;
+
+}
